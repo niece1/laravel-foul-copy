@@ -81,6 +81,6 @@ Route::get('/posts', function () {
     return view('posts');
 });
 
-Route::resource('books', 'BookController');
+Route::resource('books', 'BookController')->middleware('auth');
 
 Auth::routes();

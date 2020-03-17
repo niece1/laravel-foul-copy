@@ -8,7 +8,8 @@
         <thead>
           <tr>
             <th scope="col">Book name</th>
-            <th scope="col">Price</th>                   
+            <th scope="col">Price</th> 
+          <!--  <th scope="col">Price EUR</th>   -->                
           </tr>
         </thead>
         <tbody>
@@ -16,7 +17,7 @@
           <tr>           
             <td scope="row">{{ $book->name }}</td>
             <td>{{ $book->price }}</td>
-            
+        <!--    <td>{{ $book->price_eur }}</td> -->
           </tr>
           @empty
           <tr>
@@ -25,7 +26,7 @@
          @endforelse
        </tbody>
      </table>
-     
+     {{ $books->links() }}
    </div>
  </div>
 

@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Services\CurrencyService;
 
 class Book extends Model
 {
     protected $fillable = ['name', 'price'];
 
-    public function getPriceEuroAttribute()
+    public function getPriceEurAttribute()
     {
-    	return (new CurrencyServise())->convert($this->price, 'usd', 'eur');
+ //   	return (new CurrencyService())->convert($this->price, 'usd', 'eur');
     }
 }
