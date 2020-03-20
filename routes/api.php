@@ -27,3 +27,4 @@ Route::post('post', 'PostController@store');
 Route::put('post', 'PostController@store');
 // Delete article
 Route::delete('post/{id}', 'PostController@destroy');
+

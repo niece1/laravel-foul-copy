@@ -9,8 +9,7 @@
 
     <title>@yield('title', 'Rosy')</title> <!--Second argument is a default title-->
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +17,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
 
     @yield('extra-css')
 </head>
@@ -36,6 +36,10 @@
     <footer >
         @include('footer')
     </footer>
+    <!-- Scripts -->
+   
+    
+     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('extra-js')
 </div>
 </body>

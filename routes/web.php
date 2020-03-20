@@ -83,4 +83,7 @@ Route::get('/posts', function () {
 
 Route::resource('books', 'BookController')->middleware('auth');
 
+Route::get('customers', 'CustomerController@index')->name('customers');
+Route::get('customers/any', 'CustomerController@getCustomers')->name('get.customers');
+
 Auth::routes();

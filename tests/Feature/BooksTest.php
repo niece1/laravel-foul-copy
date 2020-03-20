@@ -9,12 +9,52 @@ use App\Book;
 class BooksTest extends TestCase
 {
     use RefreshDatabase;
+
+    private function create_user()
+    {
+        return factory(User::class)->create([
+            'email'=>'admin@admin.com',
+            'password'=>bcrypt('password123'),
+        ]);
+    }
+
+    private function create_user($is_admin=0)
+    {
+        return factory(User::class)->create([
+            'email'=>($is_admin) ? 'admin@admin.com' :  'user@user.com',
+            'password'=>bcrypt('password123'),
+            'is_admin'=> $is_admin,
+        ]);
+    }
+    
+    //the same as previous, we need delete $user=$this->create_user(); change $response=$this->actingAs($this->user)->get('/books');
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->user=factory(User::class)->create([
+            'email'=>'admin@admin.com',
+            'password'=>bcrypt('password123'),
+        ]);
+    }
     
     /** @test **/
     public function test_bookpage_contains_empty_books_table()
     {
        
         $response = $this->get('/books');
+
+        $response->assertStatus(200);
+
+        $response->assertSee('No books found');
+
+    }
+    
+    //the same as previous yet if auth
+    public function test_bookpage_contains_empty_books_table()
+    {
+        $user=$this->create_user();
+       
+        $response=$this->actingAs($user)->get('/books');
 
         $response->assertStatus(200);
 
